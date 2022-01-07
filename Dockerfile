@@ -53,7 +53,8 @@ COPY ./scripts/* ./scripts/
 
 # Owner and Permissions 
 RUN sudo chown -R ${USER_NAME}:${USER_NAME} ${DATA} ${WORKSPACE} ${PRODUCT_WORKSPACE} ${HOME}/Desktop && \
-    sudo chmod 755 ${DATA}/*.sh
+    sudo chmod 755 ./scripts/*.sh
+#sudo chmod 755 ${DATA}/*.sh
 
 #########################################
 #### ---- Addition Libs/Plugins ---- ####
