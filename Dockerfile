@@ -52,7 +52,7 @@ COPY ./drivers/* ${DATA}/
 COPY ./scripts/* ${DATA}/
 
 # Owner and Permissions 
-RUN sudo chown -R ${USER}:${USER} ${DATA} ${WORKSPACE} ${PRODUCT_WORKSPACE} ${HOME}/Desktop && \
+RUN sudo chown -R ${USER_NAME}:${USER_NAME} ${DATA} ${WORKSPACE} ${PRODUCT_WORKSPACE} ${HOME}/Desktop && \
     sudo chmod 755 ${DATA}/*.sh
 
 #########################################
@@ -66,18 +66,15 @@ RUN sudo chown -R ${USER}:${USER} ${DATA} ${WORKSPACE} ${PRODUCT_WORKSPACE} ${HO
 #### VNC ####
 ##################################
 WORKDIR ${HOME}
-USER ${USER}
+USER ${USER_NAME}
 ENTRYPOINT ["/dockerstartup/vnc_startup.sh"]
 
 ########################
 #### ---- KNIME ----####
 ########################
 VOLUME ${PRODUCT_WORKSPACE}
-# VOLUME ${WORKSPACE}
-# VOLUME ${DATA}
-
-WORKDIR ${HOME}
-USER ${USER}
+VOLUME ${WORKSPACE}
+VOLUME ${DATA}
 
 # run script 
 CMD [ "sh", "-c", "${DATA}/run_knime.sh", "${PRODUCT_EXE}", "${WORKSPACE}"]
