@@ -2,7 +2,7 @@
 \!/=
 /configuration/org.eclipse.core.net/org.eclipse.core.net.hasMigrated=true
 /configuration/org.eclipse.ui.ide/MAX_RECENT_WORKSPACES=10
-/configuration/org.eclipse.ui.ide/RECENT_WORKSPACES=/home/developer/mydata/knime-workspace\n/home/developer/knime-workspace
+/configuration/org.eclipse.ui.ide/RECENT_WORKSPACES=/home/developer/knime-workspace
 /configuration/org.eclipse.ui.ide/RECENT_WORKSPACES_PROTOCOL=3
 /configuration/org.eclipse.ui.ide/SHOW_RECENT_WORKSPACES=false
 /configuration/org.eclipse.ui.ide/SHOW_WORKSPACE_SELECTION_DIALOG=false
@@ -22,7 +22,7 @@
 /instance/org.knime.database/drivers/td2/description=
 /instance/org.knime.database/drivers/td2/driver_class=com.teradata.jdbc.TeraDriver
 /instance/org.knime.database/drivers/td2/name=teradata2
-/instance/org.knime.database/drivers/td2/paths/0=/home/developer/mydata/terajdbc4.jar
+/instance/org.knime.database/drivers/td2/paths/0=/home/developer/data/terajdbc4.jar
 /instance/org.knime.database/drivers/td2/url_template=jdbc\:<protocol>\://<host>\:<port>/<database>
 /instance/org.knime.database/drivers/td2/version=17.0.0
 /instance/org.knime.python2/condaDirectoryPath=/home/developer/anaconda3
@@ -33,7 +33,7 @@
 /instance/org.knime.python2/python3Path=python3
 /instance/org.knime.python2/pythonEnvironmentType=manual
 /instance/org.knime.python2/serializerId=org.knime.serialization.flatbuffers.column
-/instance/org.knime.workbench.core/database_drivers=/home/developer/mydata/terajdbc4.jar
+/instance/org.knime.workbench.core/database_drivers=/home/developer/data/terajdbc4.jar
 /instance/org.knime.workbench.core/knime.askedToSendStatistics=true
 /instance/org.knime.workbench.core/knime.workspace.version=20190627
 /instance/org.knime.workbench.explorer.view/mountpointNode/EXAMPLES/active=true

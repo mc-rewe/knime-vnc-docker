@@ -41,8 +41,7 @@ RUN sudo wget -q -c ${DOWNLOAD_URL} && \
 
 COPY ./Desktop/KNIME.desktop ${HOME}/Desktop/KNIME.desktop
 
-RUN sudo mkdir -p ${DATA} ${WORKSPACE} ${PRODUCT_WORKSPACE} && \
-    sudo chown -R ${USER}:${USER} ${DATA} ${WORKSPACE} ${PRODUCT_WORKSPACE} ${HOME}/Desktop
+RUN sudo mkdir -p ${DATA} ${WORKSPACE} ${PRODUCT_WORKSPACE} 
 
 # Python packages
 RUN pip3 install --upgrade teradatasql paramiko pandas
@@ -50,7 +49,9 @@ RUN pip3 install --upgrade teradatasql paramiko pandas
 # configure knime & workflows
 COPY ./knime-workspace/ ${WORKSPACE}
 COPY ./drivers/* ${DATA}/
-COPY ./scripts/* ${DATA}/
+COPY --chown=0755 ./scripts/* ${DATA}/
+
+RUN sudo chown -R ${USER}:${USER} ${DATA} ${WORKSPACE} ${PRODUCT_WORKSPACE} ${HOME}/Desktop
 
 #########################################
 #### ---- Addition Libs/Plugins ---- ####
@@ -76,4 +77,5 @@ VOLUME ${DATA}
 WORKDIR ${HOME}
 USER ${USER}
 
-CMD ["${DATA}/run_knime.sh", "${PRODUCT_EXE}", "${WORKSPACE}"]
+# run script 
+CMD [ "sh", "-c", "${DATA}/run_knime.sh", "${PRODUCT_EXE}", "${WORKSPACE}"]
