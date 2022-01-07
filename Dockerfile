@@ -48,10 +48,10 @@ RUN sudo mkdir -p ${DATA} ${WORKSPACE} ${PRODUCT_WORKSPACE}
 # Python packages
 RUN pip3 install --upgrade teradatasql paramiko pandas
 
-# Install Knime Extensions
+# Install Python Extensions in Knime
 RUN ${PRODUCT_EXE} -application org.eclipse.equinox.p2.director -nosplash -consoleLog \
     -installIU org.knime.features.python2.feature.group \
-    -repository http://update.knime.com/analytics-platform/4.1
+    -repository http://update.knime.com/analytics-platform/4.4
 
 # Get the stuff we'll need to run knime workflows via script
 COPY ./knime-workspace/ ${WORKSPACE}
