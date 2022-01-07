@@ -14,7 +14,9 @@ ENV PRODUCT=${PRODUCT}
 
 ENV PRODUCT_WORKSPACE=${PRODUCT_WORKSPACE:-"${HOME}/${PRODUCT}-workspace"}
 ENV WORKSPACE=${WORKSPACE:-"${HOME}/workspace"}
-ENV DATA=${DATA:-"${HOME}/data"}
+
+ARG DATA=${DATA:-"${HOME}/data"}
+ENV DATA=${DATA}
 
 ARG PRODUCT_VERSION=${PRODUCT_VERSION:-4.4.0}
 ENV PRODUCT_VERSION=${PRODUCT_VERSION}
@@ -49,12 +51,11 @@ RUN pip3 install --upgrade teradatasql paramiko pandas
 # Get the stuff we'll need to run knime workflows via script
 COPY ./knime-workspace/ ${WORKSPACE}
 COPY ./drivers/* ${DATA}/
-COPY ./scripts/* ${HOME}/scripts/
+COPY ./scripts/run_knime.sh ${HOME}/scripts/
 
 # Owner and Permissions 
 RUN sudo chown -R ${USER_NAME}:${USER_NAME} ${DATA} ${WORKSPACE} ${PRODUCT_WORKSPACE} ${HOME}/Desktop && \
     sudo chmod 755 ${HOME}/scripts/*.sh
-#sudo chmod 755 ${DATA}/*.sh
 
 #########################################
 #### ---- Addition Libs/Plugins ---- ####
@@ -78,4 +79,4 @@ VOLUME ${WORKSPACE}
 VOLUME ${DATA}
 
 # run script 
-CMD [ "sh", "-c", "${DATA}/run_knime.sh", "${PRODUCT_EXE}", "${WORKSPACE}"]
+CMD [ "sh", "-c", "${HOME}/scripts/run_knime.sh ${PRODUCT_EXE} ${WORKSPACE}"]
