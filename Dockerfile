@@ -49,11 +49,11 @@ RUN pip3 install --upgrade teradatasql paramiko pandas
 # Get the stuff we'll need to run knime workflows via script
 COPY ./knime-workspace/ ${WORKSPACE}
 COPY ./drivers/* ${DATA}/
-COPY ./scripts/* ./scripts/
+COPY ./scripts/* ${HOME}/scripts/
 
 # Owner and Permissions 
 RUN sudo chown -R ${USER_NAME}:${USER_NAME} ${DATA} ${WORKSPACE} ${PRODUCT_WORKSPACE} ${HOME}/Desktop && \
-    sudo chmod 755 ./scripts/*.sh
+    sudo chmod 755 ${HOME}/scripts/*.sh
 #sudo chmod 755 ${DATA}/*.sh
 
 #########################################
