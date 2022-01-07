@@ -1,0 +1,2 @@
+if this file is present, the git pre-commit hook will not get the directory structure from git.rewe.local
+if it is missing, directory structure will be populated from repo
