@@ -49,8 +49,8 @@ RUN pip3 install --upgrade teradatasql paramiko pandas
 
 # configure knime & workflows
 COPY ./knime-workspace/ ${WORKSPACE}
-COPY ./drivers/* ${DATA}
-COPY ./scripts/* ${DATA}
+COPY ./drivers/* ${DATA}/
+COPY ./scripts/* ${DATA}/
 
 #########################################
 #### ---- Addition Libs/Plugins ---- ####
