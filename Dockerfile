@@ -73,8 +73,8 @@ ENTRYPOINT ["/dockerstartup/vnc_startup.sh"]
 #### ---- KNIME ----####
 ########################
 VOLUME ${PRODUCT_WORKSPACE}
-VOLUME ${WORKSPACE}
-VOLUME ${DATA}
+# VOLUME ${WORKSPACE}
+# VOLUME ${DATA}
 
 WORKDIR ${HOME}
 USER ${USER}
