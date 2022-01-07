@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.knime.org/2008/09/XMLConfig" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.knime.org/2008/09/XMLConfig http://www.knime.org/XMLConfig_2008_09.xsd" key="db_session">
+    <config key="Session Info">
+        <entry key="sessionID" type="xstring" value="94d53fd9-133a-438d-a7e2-7df91d5f7587"/>
+        <entry key="dbTypeId" type="xstring" value="default"/>
+        <entry key="dialectId" type="xstring" value="sql92"/>
+        <entry key="dbURL" type="xstring" value="jdbc:teradata://td2.eil.risnet.de/CHARSET=UTF8"/>
+        <entry key="authenticationType" type="xstring" value="USER_PWD"/>
+        <entry key="dbUser" type="xstring" value="a1474c5"/>
+        <entry key="dbPassword" type="xpassword" value="01A4F021AF0B5BDF8A820FA25DAA1F9D39581F0E027E6B7DC58962D1B6C30B16CD"/>
+    </config>
+    <config key="Driver Definition">
+        <entry key="driverId" type="xstring" value="td2"/>
+        <entry key="driverName" type="xstring" value="teradata2"/>
+        <entry key="driverVersion" type="xstring" value="17.0.0"/>
+        <entry key="driverClass" type="xstring" value="com.teradata.jdbc.TeraDriver"/>
+        <entry key="driverDescription" type="xstring" value=""/>
+        <entry key="driverOrigin" type="xstring" value="USER"/>
+    </config>
+    <config key="Attributes">
+        <config key="java.lang.Boolean">
+            <entry key="knime.db.dialect.sql.drop_table" type="xboolean" value="true"/>
+        </config>
+    </config>
+</config>

@@ -1,0 +1,18 @@
+
+{
+    "type": "object",
+    "properties": {
+        "string-input-791": {
+            "type": "string",
+            "default": "myfile",
+            "description": "For example myfile",
+            "example": "myfile"
+        },
+        "FILE_EXTENSION-789": {
+            "type": "string",
+            "default": ".txt",
+            "description": "For example xlsx",
+            "example": ".txt"
+        }
+    }
+}

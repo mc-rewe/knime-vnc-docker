@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.knime.org/2008/09/XMLConfig" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.knime.org/2008/09/XMLConfig http://www.knime.org/XMLConfig_2008_09.xsd" key="settings.xml">
+    <entry key="node_file" type="xstring" value="settings.xml"/>
+    <config key="flow_stack"/>
+    <config key="internal_node_subsettings">
+        <entry key="memory_policy" type="xstring" value="CacheSmallInMemory"/>
+    </config>
+    <config key="model">
+        <config key="multipleStatement_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_boolean"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <entry key="multipleStatement" type="xboolean" value="true"/>
+        <config key="statementSeparator_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_string"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <entry key="statementSeparator" type="xstring" value=";"/>
+        <config key="statement_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_string"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <entry key="statement" type="xstring" value="/*  2021-11-05 MC: 2021 Cyreen Steelen Test%%00010 *  Datenlieferung aus Bondaten an Cyreen%%00010*/%%00010%%00010----------------------------------------------------------------------------------------------------%%00010-- #####################    %%00009MAERKTE ZEITRAEUME ARTIKEL COUPONS%%00009%%00009%%00009 ####################%%00010----------------------------------------------------------------------------------------------------%%00010-- FOCUSSTORES: RELEVANTE MAERKTE %%00010CALL PROCEDURES.CIA_DROP_VOLATILE_TABLE('FocusStores');%%00010CREATE VOLATILE TABLE FocusStores AS (          %%00010    SELECT%%00010    %%00009eins.ma_id, eins.wawi_ma_nr, eins.ww_ident, eins.ron_id,%%00010    %%00009eins.ma_ber_id, eins.ma_reg_id, eins.ak_kz_id,%%00010    %%00009eins.ma_plz, eins.ma_ort, eins.ma_str, eins.ma_lang_txt, eins.ma_txt, %%00010    %%00009berr.ma_ber_txt,%%00010    %%00009regg.ma_reg_txt,%%00010    %%00009krei.kreis_id, krei.kreis_txt, krei.rbzk_id, rbzk.rbzk_txt, krei.bland_id,%%00010    %%00009eins.RESIS_GEO_KOORD_X %%00009%%00009AS GeoX,%%00010%%00009%%00009eins.RESIS_GEO_KOORD_Y%%00009%%00009AS GeoY    %%00009%%00010    FROM CIA.LU_D_PB_MA_EINSCHLUSS AS eins%%00009%%00009-- Hier ist Dortmund raus %%00010   %%00009%%00009LEFT JOIN CIA.LU_D_MA_BEREICH AS berr ON eins.ma_ber_id = berr.ma_ber_id%%00010   %%00009%%00009LEFT JOIN CIA.LU_D_MA_REGION  AS regg ON eins.ma_reg_id = regg.ma_reg_id%%00010   %%00009%%00009LEFT JOIN CIA.LU_D_KREIS %%00009  AS krei ON eins.kreis_id = krei.kreis_id%%00010   %%00009%%00009LEFT JOIN CIA.LU_D_RBZK %%00009  AS rbzk ON eins.rbzk_id = rbzk.rbzk_id%%00010    WHERE eins.ma_ber_id IN (140, 165)%%00010%%00009%%00009-- AND wawi_ma_nr IN (43406003, 43403062) -- Die zwei Märkte%%00010%%00009%%00009AND ma_id IN (1000320062, 1100016506)%%00010) %%00010WITH DATA UNIQUE PRIMARY INDEX (MA_ID) ON COMMIT PRESERVE ROWS;%%00010COLLECT STATISTICS COLUMN (MA_ID) ON FocusStores;%%00010----------------------------------------------------------------------------------------------------%%00010%%00010-- Zeitsteuerung - Sieben volle Tage (bis gestern)%%00010CALL PROCEDURES.CIA_DROP_VOLATILE_TABLE('periode_tag');%%00010CREATE VOLATILE TABLE periode_tag AS (%%00010%%00009SELECT DISTINCT %%00010%%00009%%00009kal_tag_id, kal_wo_id, kal_wo_otw_id, log_wo_otw, log_wo,%%00010%%00009%%00009'az'%%00009%%00009AS period_id%%00010%%00009FROM CIA.LU_D_KAL_TAG%%00010%%00009%%00009WHERE kal_tag_id &gt;= CURRENT_DATE() - 14 AND kal_tag_id &lt;= CURRENT_DATE() - 1%%00010)%%00010WITH DATA UNIQUE PRIMARY INDEX (kal_tag_id) ON COMMIT PRESERVE ROWS;%%00010COLLECT STATISTICS COLUMN (KAL_TAG_ID) ON periode_tag;%%00010----------------------------------------------------------------------------------------------------%%00010%%00010-- Artikel Fokus Liste%%00010CALL procedures.Cia_Drop_volatile_table('Nan_Infos_FokusArtikel');%%00010CREATE VOLATILE TABLE Nan_Infos_FokusArtikel AS (    %%00010%%00009SELECT DISTINCT%%00010%%00009%%00009nann.nan_art_id,  nann.text45,%%00010%%00009%%00009CASE WHEN nan_art_id IN (108024719, 102462970) THEN 1 ELSE 0 END AS Fokus,%%00010%%00009%%00009--%%00010%%00009%%00009wgwg.WG_4_id, wgwg.WG_4_txt, wgwg.WG_3_id, wgwg.WG_3_txt, wgwg.WG_2_id, wgwg.WG_2_txt,%%00010%%00009%%00009wgwg.VS_FOK_SORT_id, wgwg. VS_FOK_SORT_txt, wgwg.VS_FOKUS_id, wgwg.VS_FOKUS_txt%%00010%%00009FROM CIA.LU_D_NAN_ART AS nann%%00010%%00009%%00009JOIN CIA.LU_D_WG_4_EXT AS wgwg ON nann.WG_4_ID = wgwg.WG_4_ID%%00010%%00009WHERE nann.nan_art_id IN (%%00010%%00009%%00009108024719,%%00009 -- ja Knusper Müsli%%00010%%00009%%00009102462970%%00009 -- ja Kaffe Latte Macchiato Drink%%00010%%00009%%00009) %%00010)%%00010WITH DATA UNIQUE PRIMARY INDEX (nan_art_id) ON COMMIT PRESERVE ROWS;%%00010----------------------------------------------------------------------------------------------------%%00010%%00010-- Artikel Liste alle relevanten%%00010CALL procedures.Cia_Drop_volatile_table('Nan_Infos_WGArtikel');%%00010CREATE VOLATILE TABLE Nan_Infos_WGArtikel AS (    %%00010%%00009SELECT DISTINCT%%00010%%00009%%00009nann.nan_art_id,  nann.text45, ZEROIFNULL(foku.Fokus) AS Fokus,%%00010%%00009%%00009--%%00010%%00009%%00009wgwg.WG_4_id, wgwg.WG_4_txt, wgwg.WG_3_id, wgwg.WG_3_txt, wgwg.WG_2_id, wgwg.WG_2_txt,%%00010%%00009%%00009wgwg.VS_FOK_SORT_id, wgwg. VS_FOK_SORT_txt, wgwg.VS_FOKUS_id, wgwg.VS_FOKUS_txt%%00010%%00009FROM CIA.LU_D_NAN_ART AS nann%%00010%%00009%%00009JOIN CIA.LU_D_WG_4_EXT %%00009%%00009%%00009 AS wgwg ON nann.WG_4_ID = wgwg.WG_4_ID%%00010%%00009%%00009JOIN Nan_Infos_FokusArtikel%%00009%%00009 AS filt ON nann.wg_4_id = filt.wg_4_id %%00009  -- relevant WG4%%00010%%00009%%00009LEFT JOIN Nan_Infos_FokusArtikel AS foku ON nann.nan_Art_id = filt.nan_Art_id -- Fokus Art%%00010)%%00010WITH DATA UNIQUE PRIMARY INDEX (nan_art_id) ON COMMIT PRESERVE ROWS;%%00010----------------------------------------------------------------------------------------------------%%00010----------------------------------------------------------------------------------------------------%%00010%%00010%%00010%%00010----------------------------------------------------------------------------------------------------%%00010-- ########################   %%00009%%00009%%00009%%00009Timestamp matching %%00009%%00009%%00009  ########################%%00010----------------------------------------------------------------------------------------------------%%00010-- In der F_BO_BON_UMS Tabelle finden sich sekundengenaue Kassenzeiten (Herkunft MSL Tabellen, AP Patrick Fechner)%%00010-- Es ist nicht ganz klar, ob es start oder Endzeitpunkte der Transaktion sind%%00010-- Auch nicht klar, wie genau diese sind. Sollten mal mit Einkauf gegengecheckt werden%%00010-- Im &quot;eJournal DWH&quot; kann man es mit echten Bons vergleichen%%00010-- Wir bilden aus Timestamp &quot;unsere&quot; Arbeitszeit_ID aus den Bon Tabellen%%00010CALL PROCEDURES.CIA_DROP_VOLATILE_TABLE('F_BO_BON_UMS_ARBEITSZEIT');%%00010CREATE VOLATILE MULTISET TABLE F_BO_BON_UMS_ARBEITSZEIT AS (%%00010%%00009SELECT%%00010%%00009%%00009pos1.*,%%00010%%00009%%00009CAST('1'||CAST(( CAST(pos1.T4734_BON_TS AS TIMESTAMP) (FORMAT 'HHMI')) AS VARCHAR(20)) AS NUMERIC) AS arbeitszeit_id%%00010%%00009FROM CIA.F_BO_BON_UMS AS pos1%%00010%%00009%%00009JOIN periode_tag AS zeit ON pos1.kal_tag_id = zeit.kal_tag_id%%00010%%00009%%00009JOIN FocusStores AS stor ON pos1.ma_id = stor.ma_id%%00010)%%00010WITH DATA PRIMARY INDEX(ma_id, nan_art_id, kal_tag_id, T4734_BON_TS, KASSENNR) ON COMMIT PRESERVE ROWS;%%00010----------------------------------------------------------------------------------------------------%%00010%%00010-- Markiere Relevante Artikel%%00010CALL PROCEDURES.CIA_DROP_VOLATILE_TABLE('Pos_MengeUmsatzTSRelevant');%%00010CREATE VOLATILE TABLE Pos_MengeUmsatzTSRelevant AS (%%00010%%00009SELECT%%00010%%00009%%00009kopf.ma_id,  kopf.kal_tag_id,%%00010%%00009%%00009kopf.kassennr %%00009%%00009%%00009 AS kassen_nr_id,%%00009%%00009%%00010%%00009%%00009kopf.bon_nr%%00009 %%00009%%00009%%00009 AS trans_id,%%00010%%00009%%00009kopf.t4734_Bon_Ts%%00009%%00009 AS bon_TS,%%00010%%00009%%00009kopf.nan_art_id,%%00010%%00009%%00009--%%00010%%00009%%00009CASE WHEN nann.nan_art_id IS NOT NULL THEN 1 ELSE 0 END %%00009   AS RelArtikel,%%00010%%00009%%00009SUM(ABV_mg)%%00009%%00009    %%00009 AS Menge,%%00010%%00009%%00009SUM(ABV_W_bto)%%00009%%00009%%00009 AS Umsatz%%00010%%00009FROM F_BO_BON_UMS_ARBEITSZEIT AS kopf%%00010%%00009%%00009LEFT JOIN Nan_Infos_WGArtikel AS nann ON kopf.nan_art_id = nann.nan_art_id%%00009%%00009%%00010%%00009GROUP BY 1, 2, 3, 4, 5, 6, 7%%00010)%%00010WITH DATA UNIQUE PRIMARY INDEX(ma_id, kal_tag_id, kassen_nr_id, trans_id, nan_art_id) ON COMMIT PRESERVE ROWS;%%00010----------------------------------------------------------------------------------------------------%%00010----------------------------------------------------------------------------------------------------%%00010%%00010%%00010%%00010----------------------------------------------------------------------------------------------------%%00010-- ############################   %%00009%%00009%%00009%%00009ABVERKAUF  %%00009%%00009%%00009  ############################%%00010----------------------------------------------------------------------------------------------------%%00010-- Füge Bon_TS zu Bon hinzu%%00010-- Anonymse Artikel für Export an DL: Nur Infos über relevante Artikel. Erstelle unique BonID%%00010CALL PROCEDURES.CIA_DROP_VOLATILE_TABLE('Pos_MengeUmsatzTSRelevant_Anonym');%%00010CREATE VOLATILE TABLE Pos_MengeUmsatzTSRelevant_Anonym AS (%%00010%%00009SELECT%%00010%%00009%%00009pos1.kal_tag_id, pos1.ma_id, pos1.bon_ts, pos1.kassen_nr_id, pos1.trans_id, pos1.nan_art_id, %%00009%%00009%%00010%%00009%%00009CAST( -- to numeric%%00010%%00009%%00009%%00009OREPLACE( -- remove whitespaces%%00010%%00009%%00009%%00009%%00009pos1.ma_id || pos1.kassen_nr_id || pos1.trans_id ||%%00010%%00009%%00009%%00009%%00009%%00009CAST((CAST(pos1.bon_ts AS TIMESTAMP) (FORMAT 'YYYYMMDD')) AS VARCHAR(14)), -- numeric compatible format%%00010%%00009%%00009%%00009%%00009' ', '') %%00010%%00009%%00009%%00009AS DECIMAL(38)%%00010%%00009%%00009%%00009) AS BonID,%%00010%%00009%%00009CASE WHEN pos1.RelArtikel = 1 THEN pos1.Menge ELSE NULL END%%00009%%00009 AS Menge,%%00010%%00009%%00009CASE WHEN pos1.RelArtikel = 1 THEN pos1.Umsatz ELSE NULL END%%00009 AS Umsatz,%%00010%%00009%%00009CASE WHEN pos1.RelArtikel = 1 THEN nann.text45 ELSE NULL END %%00009 AS Artikel,%%00010%%00009%%00009--%%00010%%00009%%00009CASE WHEN pos1.RelArtikel = 1 THEN nann.wg_4_id  ELSE NULL END %%00009 AS wg_4_id,%%00010%%00009%%00009CASE WHEN pos1.RelArtikel = 1 THEN nann.wg_4_txt ELSE NULL END %%00009 AS wg_4_txt%%00009%%00009%%00010%%00009FROM Pos_MengeUmsatzTSRelevant AS pos1%%00010%%00009%%00009LEFT JOIN Nan_Infos_WGArtikel AS nann ON pos1.nan_art_id = nann.nan_art_id%%00010)%%00010WITH DATA UNIQUE PRIMARY INDEX(ma_id, kassen_nr_id, trans_id, kal_tag_id, nan_art_id)%%00010ON COMMIT PRESERVE ROWS;%%00010----------------------------------------------------------------------------------------------------%%00010----------------------------------------------------------------------------------------------------%%00010%%00010%%00010"/>
+    </config>
+    <config key="nodeAnnotation">
+        <entry key="text" type="xstring" value="create volatile tables"/>
+        <entry key="bgcolor" type="xint" value="16777215"/>
+        <entry key="x-coordinate" type="xint" value="189"/>
+        <entry key="y-coordinate" type="xint" value="119"/>
+        <entry key="width" type="xint" value="142"/>
+        <entry key="height" type="xint" value="17"/>
+        <entry key="alignment" type="xstring" value="CENTER"/>
+        <entry key="borderSize" type="xint" value="0"/>
+        <entry key="borderColor" type="xint" value="16777215"/>
+        <entry key="defFontSize" type="xint" value="9"/>
+        <entry key="annotation-version" type="xint" value="20151123"/>
+        <config key="styles">
+            <config key="style_0">
+                <entry key="start" type="xint" value="0"/>
+                <entry key="length" type="xint" value="22"/>
+                <entry key="fontname" type="xstring" value="Arial"/>
+                <entry key="fontstyle" type="xint" value="0"/>
+                <entry key="fontsize" type="xint" value="9"/>
+                <entry key="fgcolor" type="xint" value="0"/>
+            </config>
+        </config>
+    </config>
+    <entry key="customDescription" type="xstring" isnull="true" value=""/>
+    <entry key="state" type="xstring" value="CONFIGURED"/>
+    <entry key="factory" type="xstring" value="org.knime.database.node.manipulation.executor.DBExecutorNodeFactory"/>
+    <entry key="node-name" type="xstring" value="DB SQL Executor"/>
+    <entry key="node-bundle-name" type="xstring" value="KNIME database nodes"/>
+    <entry key="node-bundle-symbolic-name" type="xstring" value="org.knime.database.nodes"/>
+    <entry key="node-bundle-vendor" type="xstring" value="KNIME AG, Zurich, Switzerland"/>
+    <entry key="node-bundle-version" type="xstring" value="4.4.0.v202106231908"/>
+    <entry key="node-feature-name" type="xstring" value="KNIME Database"/>
+    <entry key="node-feature-symbolic-name" type="xstring" value="org.knime.features.database.feature.group"/>
+    <entry key="node-feature-vendor" type="xstring" value="KNIME AG, Zurich, Switzerland"/>
+    <entry key="node-feature-version" type="xstring" value="4.4.0.v202106231908"/>
+    <config key="factory_settings"/>
+    <entry key="name" type="xstring" value="DB SQL Executor"/>
+    <entry key="hasContent" type="xboolean" value="false"/>
+    <entry key="isInactive" type="xboolean" value="false"/>
+    <config key="ports">
+        <config key="port_1">
+            <entry key="index" type="xint" value="1"/>
+            <entry key="port_dir_location" type="xstring" isnull="true" value=""/>
+        </config>
+    </config>
+    <config key="filestores">
+        <entry key="file_store_location" type="xstring" isnull="true" value=""/>
+        <entry key="file_store_id" type="xstring" isnull="true" value=""/>
+    </config>
+</config>

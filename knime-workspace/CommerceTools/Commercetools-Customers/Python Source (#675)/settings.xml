@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.knime.org/2008/09/XMLConfig" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.knime.org/2008/09/XMLConfig http://www.knime.org/XMLConfig_2008_09.xsd" key="settings.xml">
+<entry key="node_file" type="xstring" value="settings.xml"/>
+<config key="flow_stack"/>
+<config key="internal_node_subsettings">
+<entry key="memory_policy" type="xstring" value="CacheSmallInMemory"/>
+</config>
+<config key="model">
+<entry key="sourceCode" type="xstring" value="&quot;&quot;&quot;%%000102019-04-24 MC:%%00010 - Connect to Commercetools API %%00010 - Get all new / updated customers%%00010&quot;&quot;&quot;%%00010%%00010import os%%00010import requests%%00010from math import ceil%%00010import pandas as pd%%00010import csv%%00010import json%%00010import datetime%%00010%%00010CURR_TIMESTAMP = str(datetime.datetime.utcnow())%%00010CURR_DATE = str(datetime.datetime.utcnow().date())%%00010%%00010CLIENT_ID = &quot;ZGIDetWrcCaGMASWwX8gg2Av&quot;%%00010CLIENT_SECRET = &quot;EsU3IW8ML8IdtKdrf46FONwl8LX8fvqa&quot;%%00010%%00010LAST_DB_ENTRY = flow_variables.get('last_entry') # Last Entry in Database%%00010%%00010PROJECT_KEY = &quot;penny-live-1&quot;%%00010URL = &quot;https://auth.sphere.io/oauth/token&quot;%%00010HEADERS = { 'Content-Type' : 'application/x-www-form-urlencoded' }%%00010RESPONSE_LIMIT = 500     # 500 is standard API Limit%%00010RESPONSE_OFFSET = RESPONSE_LIMIT%%00010%%00010%%00010PROXY = flow_variables.get(&quot;PROXY&quot;)%%00010PROXIES = None%%00010if PROXY is not None and PROXY != &quot;None&quot;:%%00010    PROXIES = {&quot;https&quot;: f&quot;{PROXY}&quot;}%%00010%%00010url = &quot;https://api.sphere.io/{}/customers&quot;.format(PROJECT_KEY)%%00010params = {}%%00010params['offset'] = 0%%00010params['limit'] = RESPONSE_LIMIT%%00010%%00010def login(client_id, client_secret):%%00010    body = &quot;grant_type=client_credentials&amp;scope=view_customers:{}&quot;.format(PROJECT_KEY)%%00010    auth = (client_id, client_secret)%%00010    r = requests.post(URL, data=body, headers=HEADERS, auth=auth, proxies=PROXIES)%%00010    if r.status_code == 200:%%00010        return r.json()%%00010    else:%%00010        raise Exception(&quot;Failed to get an access token. Waddup?&quot;)%%00010        %%00010auth = login(CLIENT_ID, CLIENT_SECRET)%%00010HEADERS[&quot;Authorization&quot;] = &quot;Bearer {}&quot;.format(auth.get(&quot;access_token&quot;))%%00010%%00010last_date_iso = LAST_DB_ENTRY%%00010# Only get Entries which have changed since the last time we fetched data%%00010params['where'] = 'lastModifiedAt &gt;= &quot;{0}&quot; '.format(last_date_iso) %%00010%%00010# Get first batch of result to see TOTAL%%00010results = []%%00010r = requests.get(url, headers=HEADERS, params=params, proxies=PROXIES)%%00010results.append(r.json())%%00010print(&quot;Total results: {}&quot;.format(results[0].get('total')))%%00010%%00010# Get rest of results: Loop until we have all results%%00010num_queries = ceil(results[0].get('total') / results[0].get('limit'))%%00010for i in range(num_queries):  %%00010    print('\r Query {} out of {}'.format(i + 1 , num_queries), end='')%%00010    params['offset'] = (i + 1) * RESPONSE_OFFSET    %%00010    r = requests.get(url, headers = HEADERS, params = params, proxies=PROXIES)%%00010    results.append(r.json())%%00010%%00010%%00010####################################%%00010# PART 2%%00010####################################%%00010%%00010data = results%%00010%%00010TIMESTAMP_COLS = ['createdAt', 'loadTimestamp']%%00010ORDER_KOPF_VARS_KEY = [&quot;createdAt&quot;, &quot;customerNumber&quot;, &quot;email&quot;, &quot;id&quot;, &quot;loadTimestamp&quot;]%%00010%%00010%%00010order_list = []%%00010for result in data:%%00010    for customer in result.get('results'):%%00010        createdAt = customer.get('createdAt')   %%00010        customerNumber = customer.get('customerNumber')         %%00010        email = customer.get('email')  %%00010        id = customer.get('id')              %%00010        loadTimestamp = CURR_TIMESTAMP                %%00010        VARS_VALUES = [createdAt, customerNumber, email, id, loadTimestamp]%%00010        order_list.append(VARS_VALUES)%%00010%%00010# To Table%%00010df = pd.DataFrame(order_list)%%00010df.columns = ORDER_KOPF_VARS_KEY%%00010%%00010# To Datetime, without microseconds and TimeZone%%00010df[TIMESTAMP_COLS] = df[TIMESTAMP_COLS].apply(lambda x: pd.to_datetime(x))%%00010df[TIMESTAMP_COLS] = df[TIMESTAMP_COLS].apply(lambda x: x.dt.tz_localize(None))%%00010# Keep Seconds only%%00010df[TIMESTAMP_COLS] = df[TIMESTAMP_COLS].astype('datetime64[s]')%%00010# Convert to String%%00010df[TIMESTAMP_COLS] = df[TIMESTAMP_COLS].astype(str)%%00010%%00010# NANS to NONE for SQL %%00010df = df.where(pd.notnull(df), None)%%00010%%00010#To Knime Ouput%%00010output_table = df%%00010"/>
+<entry key="rowLimit" type="xint" value="1000"/>
+<entry key="pythonVersionOption" type="xstring" value="python3"/>
+<entry key="python2Command" type="xstring" value=""/>
+<entry key="python3Command" type="xstring" value=""/>
+<entry key="chunkSize" type="xint" value="500000"/>
+<entry key="convertMissingToPython" type="xboolean" value="false"/>
+<entry key="convertMissingFromPython" type="xboolean" value="false"/>
+<entry key="sentinelOption" type="xstring" value="MIN_VAL"/>
+<entry key="sentinelValue" type="xint" value="0"/>
+</config>
+<entry key="customDescription" type="xstring" isnull="true" value=""/>
+<entry key="state" type="xstring" value="EXECUTED"/>
+<entry key="factory" type="xstring" value="org.knime.python2.nodes.source.Python2SourceNodeFactory"/>
+<entry key="node-name" type="xstring" value="Python Source"/>
+<entry key="node-bundle-name" type="xstring" value="KNIME Python nodes"/>
+<entry key="node-bundle-symbolic-name" type="xstring" value="org.knime.python2.nodes"/>
+<entry key="node-bundle-vendor" type="xstring" value="KNIME AG, Zurich, Switzerland"/>
+<entry key="node-bundle-version" type="xstring" value="4.1.3.v202005112253"/>
+<entry key="node-feature-name" type="xstring" value="KNIME Python Integration"/>
+<entry key="node-feature-symbolic-name" type="xstring" value="org.knime.features.python2.feature.group"/>
+<entry key="node-feature-vendor" type="xstring" value="KNIME AG, Zurich, Switzerland"/>
+<entry key="node-feature-version" type="xstring" value="4.1.3.v202005112253"/>
+<config key="factory_settings"/>
+<entry key="name" type="xstring" value="Python Source"/>
+<entry key="hasContent" type="xboolean" value="true"/>
+<entry key="isInactive" type="xboolean" value="false"/>
+<config key="ports">
+<config key="port_1">
+<entry key="index" type="xint" value="1"/>
+<entry key="port_spec_class" type="xstring" value="org.knime.core.data.DataTableSpec"/>
+<entry key="port_object_class" type="xstring" value="org.knime.core.node.BufferedDataTable"/>
+<entry key="port_object_summary" type="xstring" value="Rows: 100500, Cols: 5"/>
+<entry key="port_dir_location" type="xstring" value="port_1"/>
+</config>
+</config>
+<config key="filestores">
+<entry key="file_store_location" type="xstring" isnull="true" value=""/>
+<entry key="file_store_id" type="xstring" value="86520c3f-fad5-4ab8-bc23-f9842d0ad6a5"/>
+</config>
+</config>

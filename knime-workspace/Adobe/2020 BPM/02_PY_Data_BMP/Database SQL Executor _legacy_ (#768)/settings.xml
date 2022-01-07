@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.knime.org/2008/09/XMLConfig" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.knime.org/2008/09/XMLConfig http://www.knime.org/XMLConfig_2008_09.xsd" key="settings.xml">
+<entry key="node_file" type="xstring" value="settings.xml"/>
+<config key="flow_stack"/>
+<config key="internal_node_subsettings">
+<entry key="memory_policy" type="xstring" value="CacheSmallInMemory"/>
+</config>
+<config key="model">
+<entry key="statement" type="xstring" value="diagnostic &quot;PRPDMODE = 1&quot; on for session;%%00010%%00010--- ZEITSTEUERUNG%%00010CALL PROCEDURES.CIA_DROP_VOLATILE_TABLE('PERIODE');%%00010CREATE VOLATILE TABLE PERIODE AS (%%00010%%00009SELECT%%00010%%00009%%00009KAL_TAG_ID,%%00010%%00009%%00009KAL_WO_OTW_ID%%00010%%00009FROM%%00010%%00009%%00009CIA.LU_D_KAL_TAG%%00010%%00009WHERE%%00010%%00009%%00009LOG_WO_OTW &gt; 0%%00010%%00009%%00009AND LOG_WO_OTW &lt;= 4%%00010%%00009%%00009)%%00010WITH DATA UNIQUE PRIMARY INDEX (KAL_TAG_ID) ON COMMIT PRESERVE ROWS;%%00010COLLECT STATISTICS COLUMN (KAL_TAG_ID) ON PERIODE;%%00010%%00010%%00010-- FOCUSSTORES: RELEVANTE MÄRKTE%%00010CALL PROCEDURES.CIA_DROP_VOLATILE_TABLE('FOCUSSTORES');%%00010CREATE VOLATILE TABLE FOCUSSTORES AS (          %%00010   SELECT%%00010%%00009   T1.MA_ID, T1.WAWI_MA_NR, T1.MA_BER_ID, T2.MA_BER_TXT, T1.MA_REG_ID, T1.AK_KZ_ID,%%00010%%00009   MAR.MA_REG_NR, MA_REG_TXT%%00010   FROM CIA.LU_D_PB_MA_EINSCHLUSS_PY T1%%00010%%00009   JOIN LU_D_MA MA ON T1.MA_ID = MA.MA_ID%%00010%%00009   JOIN CIA.LU_D_MA_REGION MAR ON MA.MA_REG_ID = MAR.MA_REG_ID%%00010   %%00009   LEFT JOIN LU_D_MA_BEREICH T2 ON T1.MA_BER_ID = T2.MA_BER_ID%%00010   WHERE T1.MA_BER_ID IN (130)%%00010   -- AND T1.AK_KZ_ID = 'S' -- NUR STAMMMAERKTE%%00010) %%00010WITH DATA UNIQUE PRIMARY INDEX (MA_ID) ON COMMIT PRESERVE ROWS;%%00010COLLECT STATISTICS COLUMN (MA_ID) ON FOCUSSTORES;%%00010%%00010--- PROMOS FINDEN%%00010CALL PROCEDURES.CIA_DROP_VOLATILE_TABLE('PROMO_POSITIONS');%%00010CREATE VOLATILE TABLE PROMO_POSITIONS AS (%%00010%%00009SELECT %%00010%%00009%%00009B.MA_ID, B.KASSEN_NR_ID, B.TRANS_ID, B.KAL_TAG_ID,%%00010%%00009%%00009B.NAN_ART_ID, E.TEXT45, A.PROMO_ID, A.PROMO_BEZEICHNUNG,%%00009%%00009%%00010%%00009%%00009SUM(B.PROMO_BETRAG)%%00009%%00009AS PROMO_BETRAG,%%00010%%00009%%00009SUM(B.PROMO_WERT)%%00009%%00009AS PROMO_WERT,%%00010%%00009%%00009MAX(B.PROMO_GOODY_TYP)%%00009AS PROMO_GOODY_TYP,%%00010%%00009%%00009SUM(B.PROMO_GOODY_WERT)%%00009AS PROMO_GOODY_WERT%%00010%%00009FROM %%00010%%00009%%00009CIA.LU_D_PROMO A%%00010%%00009JOIN%%00010%%00009%%00009CIA.V_BON_RABATT B %%00010%%00009%%00009ON A.PROMO_ID%%00009%%00009%%00009%%00009%%00009= B.PROMO_ID%%00010%%00009JOIN%%00010%%00009%%00009PERIODE C%%00010%%00009ON B.KAL_TAG_ID %%00009%%00009%%00009%%00009%%00009= C.KAL_TAG_ID%%00010%%00009JOIN%%00010%%00009%%00009FOCUSSTORES D%%00010%%00009%%00009ON B.MA_ID %%00009%%00009%%00009%%00009%%00009%%00009= D.MA_ID%%00010%%00009JOIN%%00010%%00009%%00009CIA.LU_D_NAN_ART E%%00010%%00009%%00009ON B.NAN_ART_ID =  E.NAN_ART_ID%%00010%%00009WHERE%%00010%%00009%%00009(%%00010%%00009%%00009UPPER(A.PROMO_BEZEICHNUNG) LIKE '%APP-RABATT%'%%00010%%00009%%00009AND A.PROMO_VERTRIEBSBEREICH %%00009= 30%%00010%%00009%%00009)%%00010%%00009%%00009OR --- SONDERFÄLLE HIER EINFÜGEN%%00010%%00009%%00009(%%00010%%00009%%00009A.PROMO_NR IN%%00009%%00010%%00009%%00009%%00009(%%00010%%00009%%00009%%00009460058,%%00010%%00009%%00009%%00009460640,%%00010%%00009%%00009%%00009460640%%00010%%00009%%00009%%00009)%%00010%%00009%%00009)%%00010%%00009GROUP BY 1, 2, 3, 4, 5, 6, 7, 8%%00010) %%00010WITH DATA UNIQUE PRIMARY INDEX (MA_ID, KASSEN_NR_ID, TRANS_ID, KAL_TAG_ID, NAN_ART_ID, PROMO_ID)%%00010ON COMMIT PRESERVE ROWS;%%00010%%00010%%00010%%00010%%00010%%00010--- POSITIONSDATEN FINDEN%%00010CALL PROCEDURES.CIA_DROP_VOLATILE_TABLE('BONPOSITIONS_MITPROMO');%%00010CREATE VOLATILE TABLE BONPOSITIONS_MITPROMO AS (     %%00010SELECT %%00010%%00009B.KAL_TAG_ID,%%00010%%00009B.KAL_WO_OTW_ID,%%00010%%00009COUNT(DISTINCT A.MA_ID || A.KASSEN_NR_ID || A.TRANS_ID || A.KAL_TAG_ID) AS ANZBONS%%00010FROM%%00010%%00009PROMO_POSITIONS A%%00010JOIN%%00010%%00009PERIODE B%%00010%%00009ON %%00009A.KAL_TAG_ID = B.KAL_TAG_ID%%00010JOIN%%00010%%00009CIA.V_BON_POSITION C%%00010%%00009ON%%00009A.MA_ID = C.MA_ID AND%%00010%%00009%%00009A.KASSEN_NR_ID = C.KASSEN_NR_ID AND%%00010%%00009%%00009A.TRANS_ID %%00009= C.TRANS_ID AND%%00010%%00009%%00009A.KAL_TAG_ID = C.KAL_TAG_ID AND%%00010%%00009%%00009A.NAN_ART_ID = C.NAN_ART_ID %%00010JOIN %%00010%%00009FOCUSSTORES D%%00010%%00009ON A.MA_ID = D.MA_ID%%00010GROUP BY%%00010%%000091, 2%%00010%%00009) %%00010WITH DATA UNIQUE PRIMARY INDEX (KAL_TAG_ID) ON COMMIT PRESERVE ROWS;%%00010"/>
+</config>
+<config key="nodeAnnotation">
+<entry key="text" type="xstring" value="VOLATILES"/>
+<entry key="bgcolor" type="xint" value="16777215"/>
+<entry key="x-coordinate" type="xint" value="187"/>
+<entry key="y-coordinate" type="xint" value="3539"/>
+<entry key="width" type="xint" value="106"/>
+<entry key="height" type="xint" value="15"/>
+<entry key="alignment" type="xstring" value="CENTER"/>
+<entry key="borderSize" type="xint" value="0"/>
+<entry key="borderColor" type="xint" value="16777215"/>
+<entry key="defFontSize" type="xint" value="9"/>
+<entry key="annotation-version" type="xint" value="20151123"/>
+<config key="styles"/>
+</config>
+<entry key="customDescription" type="xstring" isnull="true" value=""/>
+<entry key="state" type="xstring" value="CONFIGURED"/>
+<entry key="factory" type="xstring" value="org.knime.base.node.io.database.DBSQLExecutorNodeFactory"/>
+<entry key="node-name" type="xstring" value="Database SQL Executor (legacy)"/>
+<entry key="node-bundle-name" type="xstring" value="KNIME Base Nodes"/>
+<entry key="node-bundle-symbolic-name" type="xstring" value="org.knime.base"/>
+<entry key="node-bundle-vendor" type="xstring" value="KNIME AG, Zurich, Switzerland"/>
+<entry key="node-bundle-version" type="xstring" value="4.1.4.v202008180725"/>
+<entry key="node-feature-name" type="xstring" value="KNIME Core"/>
+<entry key="node-feature-symbolic-name" type="xstring" value="org.knime.features.base.feature.group"/>
+<entry key="node-feature-vendor" type="xstring" value="KNIME AG, Zurich, Switzerland"/>
+<entry key="node-feature-version" type="xstring" value="4.1.4.v202008250823"/>
+<config key="factory_settings"/>
+<entry key="name" type="xstring" value="Database SQL Executor (legacy)"/>
+<entry key="hasContent" type="xboolean" value="false"/>
+<entry key="isInactive" type="xboolean" value="false"/>
+<config key="ports">
+<config key="port_1">
+<entry key="index" type="xint" value="1"/>
+<entry key="port_dir_location" type="xstring" isnull="true" value=""/>
+</config>
+</config>
+<config key="filestores">
+<entry key="file_store_location" type="xstring" isnull="true" value=""/>
+<entry key="file_store_id" type="xstring" isnull="true" value=""/>
+</config>
+</config>

@@ -13,26 +13,17 @@ ARG PRODUCT=${PRODUCT:-knime}
 ENV PRODUCT=${PRODUCT}
 
 ENV PRODUCT_WORKSPACE=${PRODUCT_WORKSPACE:-"${HOME}/${PRODUCT}-workspace"}
-
 ENV WORKSPACE=${WORKSPACE:-"${HOME}/workspace"}
-
 ENV DATA=${DATA:-"${HOME}/data"}
 
 ARG PRODUCT_VERSION=${PRODUCT_VERSION:-4.4.0}
 ENV PRODUCT_VERSION=${PRODUCT_VERSION}
-
 ARG PRODUCT_DIR=${PRODUCT_DIR:-knime_${PRODUCT_VERSION}}
 ENV PRODUCT_DIR=${PRODUCT_DIR}
-
 ARG INSTALL_BASE=${INSTALL_BASE:-/opt}
 ENV INSTALL_BASE=${INSTALL_BASE}
-
 ENV PRODUCT_EXE=${PRODUCT_EXE:-${INSTALL_BASE}/${PRODUCT_DIR}/${PRODUCT}}
-
 ARG PRODUCT_URL=${PRODUCT_URL:-https://download.knime.org}
-
-# ENV DOWNLOAD_URL=https://download.knime.org/analytics-platform/linux/knime_4.2.2.linux.gtk.x86_64.tar.gz
-#ARG DOWNLOAD_URL=https://download.knime.org/analytics-platform/linux/${PRODUCT}_${PRODUCT_VERSION}.linux.gtk.x86_64.tar.gz
 ARG DOWNLOAD_URL=${PRODUCT_URL}/analytics-platform/linux/${PRODUCT}_${PRODUCT_VERSION}.linux.gtk.x86_64.tar.gz
 
 ####################################
@@ -40,16 +31,27 @@ ARG DOWNLOAD_URL=${PRODUCT_URL}/analytics-platform/linux/${PRODUCT}_${PRODUCT_VE
 ####################################
 WORKDIR ${INSTALL_BASE}
 
+# Set bash as default shell for CMDs
+SHELL ["/bin/bash", "-c"]
+
 #### ---- Install for application ----
 RUN sudo wget -q -c ${DOWNLOAD_URL} && \
     sudo tar xvf $(basename ${DOWNLOAD_URL}) && \
     sudo rm -f $(basename ${DOWNLOAD_URL} )
-    
+
 COPY ./Desktop/KNIME.desktop ${HOME}/Desktop/KNIME.desktop
 
 RUN sudo mkdir -p ${DATA} ${WORKSPACE} ${PRODUCT_WORKSPACE} && \
     sudo chown -R ${USER}:${USER} ${DATA} ${WORKSPACE} ${PRODUCT_WORKSPACE} ${HOME}/Desktop
-    
+
+# Python packages
+RUN pip3 install --upgrade teradatasql paramiko pandas
+
+# configure knime & workflows
+COPY ./knime-workspace/ ${WORKSPACE}
+COPY ./drivers/ ${DATA}
+COPY ./scripts/ ${DATA}
+
 #########################################
 #### ---- Addition Libs/Plugins ---- ####
 #########################################
@@ -61,12 +63,8 @@ RUN sudo mkdir -p ${DATA} ${WORKSPACE} ${PRODUCT_WORKSPACE} && \
 #### VNC ####
 ##################################
 WORKDIR ${HOME}
-
 USER ${USER}
-
 ENTRYPOINT ["/dockerstartup/vnc_startup.sh"]
-
-CMD ["--wait"]
 
 ########################
 #### ---- KNIME ----####
@@ -78,9 +76,4 @@ VOLUME ${DATA}
 WORKDIR ${HOME}
 USER ${USER}
 
-#CMD ["/bin/sh" "-c" "\"${{PRODUCT_EXE}\""]
-CMD "${PRODUCT_EXE}"
-
-#### --- For debug only ---- ####
-#CMD ["/usr/bin/firefox"]
-
+CMD ["${DATA}/run_knime.sh", "${PRODUCT_EXE}", "${WORKSPACE}"]

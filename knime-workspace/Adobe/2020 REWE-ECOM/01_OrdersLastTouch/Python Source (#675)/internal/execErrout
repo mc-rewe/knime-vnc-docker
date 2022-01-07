@@ -1,0 +1,555 @@
+Getting total results for request
+Getting Total numbers for 2021-12-06
+Query: {'reportDescription': {'reportSuiteID': 'rewrewededev', 'metrics': [{'id': 'orders'}], 'segments': [], 'elements': [{'id': 'evar72', 'top': 1}, {'id': 'lasttouchchannel'}, {'id': 'lasttouchchanneldetail'}], 'dateGranularity': 'day', 'dateFrom': '2021-12-06', 'dateTo': '2021-12-06'}}
+Successfully sent to queue. ReportID: 1179461108. From 2021-12-06 to 2021-12-06
+Report returned successfully: 1179461108
+Total results for report 2021-12-06 is: 14607.0
+Iteration: 1 / 74
+Sending request: 1
+Successfully sent to queue. ReportID: 1778024464. From 2021-12-06 to 2021-12-06
+Sending request: 2
+Successfully sent to queue. ReportID: 1405217664. From 2021-12-06 to 2021-12-06
+Sending request: 3
+Successfully sent to queue. ReportID: 1260588398. From 2021-12-06 to 2021-12-06
+Sending request: 4
+Successfully sent to queue. ReportID: 1057124095. From 2021-12-06 to 2021-12-06
+Sending request: 5
+Successfully sent to queue. ReportID: 1015173800. From 2021-12-06 to 2021-12-06
+Sending request: 6
+Successfully sent to queue. ReportID: 1099180167. From 2021-12-06 to 2021-12-06
+Sending request: 7
+Successfully sent to queue. ReportID: 1595087001. From 2021-12-06 to 2021-12-06
+Sending request: 8
+Successfully sent to queue. ReportID: 1632588018. From 2021-12-06 to 2021-12-06
+Sending request: 9
+Successfully sent to queue. ReportID: 1775480906. From 2021-12-06 to 2021-12-06
+Sending request: 10
+Successfully sent to queue. ReportID: 1932750786. From 2021-12-06 to 2021-12-06
+Sending request: 11
+Successfully sent to queue. ReportID: 1671084219. From 2021-12-06 to 2021-12-06
+Sending request: 12
+Successfully sent to queue. ReportID: 1231658000. From 2021-12-06 to 2021-12-06
+Sending request: 13
+Successfully sent to queue. ReportID: 1136735058. From 2021-12-06 to 2021-12-06
+Sending request: 14
+Successfully sent to queue. ReportID: 1443797770. From 2021-12-06 to 2021-12-06
+Sending request: 15
+Successfully sent to queue. ReportID: 1184039099. From 2021-12-06 to 2021-12-06
+Sending request: 16
+Successfully sent to queue. ReportID: 2142986315. From 2021-12-06 to 2021-12-06
+Sending request: 17
+Successfully sent to queue. ReportID: 1341737842. From 2021-12-06 to 2021-12-06
+Sending request: 18
+Successfully sent to queue. ReportID: 1222560683. From 2021-12-06 to 2021-12-06
+Sending request: 19
+Successfully sent to queue. ReportID: 2035666385. From 2021-12-06 to 2021-12-06
+Sending request: 20
+Successfully sent to queue. ReportID: 1725803053. From 2021-12-06 to 2021-12-06
+Sending request: 21
+Successfully sent to queue. ReportID: 1879154876. From 2021-12-06 to 2021-12-06
+Sending request: 22
+Successfully sent to queue. ReportID: 1677966561. From 2021-12-06 to 2021-12-06
+Sending request: 23
+Successfully sent to queue. ReportID: 1693996833. From 2021-12-06 to 2021-12-06
+Sending request: 24
+Successfully sent to queue. ReportID: 1293328906. From 2021-12-06 to 2021-12-06
+Sending request: 25
+Successfully sent to queue. ReportID: 1117422142. From 2021-12-06 to 2021-12-06
+Sending request: 26
+Successfully sent to queue. ReportID: 2014104049. From 2021-12-06 to 2021-12-06
+Sending request: 27
+Successfully sent to queue. ReportID: 1444618365. From 2021-12-06 to 2021-12-06
+Sending request: 28
+Successfully sent to queue. ReportID: 2068533226. From 2021-12-06 to 2021-12-06
+Sending request: 29
+Successfully sent to queue. ReportID: 1430100739. From 2021-12-06 to 2021-12-06
+Sending request: 30
+Successfully sent to queue. ReportID: 1152953539. From 2021-12-06 to 2021-12-06
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 3 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 6 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 9 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 12 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 15 s
+Report returned successfully: 1778024464
+Parsing raw json response.
+Report returned successfully: 1405217664
+Parsing raw json response.
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 3 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 6 s
+Report returned successfully: 1260588398
+Parsing raw json response.
+Report returned successfully: 1057124095
+Parsing raw json response.
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 3 s
+Report returned successfully: 1015173800
+Parsing raw json response.
+Report returned successfully: 1099180167
+Parsing raw json response.
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Report returned successfully: 1595087001
+Parsing raw json response.
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 3 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 6 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 9 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 12 s
+Report returned successfully: 1632588018
+Parsing raw json response.
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 3 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 6 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 9 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 12 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 15 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 18 s
+Report returned successfully: 1775480906
+Parsing raw json response.
+Report returned successfully: 1932750786
+Parsing raw json response.
+Report returned successfully: 1671084219
+Parsing raw json response.
+Report returned successfully: 1231658000
+Parsing raw json response.
+Report returned successfully: 1136735058
+Parsing raw json response.
+Report returned successfully: 1443797770
+Parsing raw json response.
+Report returned successfully: 1184039099
+Parsing raw json response.
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 3 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 6 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 9 s
+Report returned successfully: 2142986315
+Parsing raw json response.
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 3 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 6 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 9 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 12 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 15 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 18 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 21 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 24 s
+Report returned successfully: 1341737842
+Parsing raw json response.
+Report returned successfully: 1222560683
+Parsing raw json response.
+Report returned successfully: 2035666385
+Parsing raw json response.
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 3 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 6 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 9 s
+Report returned successfully: 1725803053
+Parsing raw json response.
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 3 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 6 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 9 s
+Report returned successfully: 1879154876
+Parsing raw json response.
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 3 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 6 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 9 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 12 s
+Report returned successfully: 1677966561
+Parsing raw json response.
+Report returned successfully: 1693996833
+Parsing raw json response.
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 3 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 6 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 9 s
+Report returned successfully: 1293328906
+Parsing raw json response.
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 3 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 6 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 9 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 12 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 15 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 18 s
+Report returned successfully: 1117422142
+Parsing raw json response.
+Report returned successfully: 2014104049
+Parsing raw json response.
+Report returned successfully: 1444618365
+Parsing raw json response.
+Report returned successfully: 2068533226
+Parsing raw json response.
+Report returned successfully: 1430100739
+Parsing raw json response.
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 3 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 6 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 9 s
+Report returned successfully: 1152953539
+Parsing raw json response.
+Iteration: 31 / 74
+Sending request: 31
+Successfully sent to queue. ReportID: 1543686726. From 2021-12-06 to 2021-12-06
+Sending request: 32
+Successfully sent to queue. ReportID: 1144262335. From 2021-12-06 to 2021-12-06
+Sending request: 33
+Successfully sent to queue. ReportID: 1456528039. From 2021-12-06 to 2021-12-06
+Sending request: 34
+Successfully sent to queue. ReportID: 2085713357. From 2021-12-06 to 2021-12-06
+Sending request: 35
+Successfully sent to queue. ReportID: 1798669365. From 2021-12-06 to 2021-12-06
+Sending request: 36
+Successfully sent to queue. ReportID: 1908605519. From 2021-12-06 to 2021-12-06
+Sending request: 37
+Successfully sent to queue. ReportID: 1668583557. From 2021-12-06 to 2021-12-06
+Sending request: 38
+Successfully sent to queue. ReportID: 1163701395. From 2021-12-06 to 2021-12-06
+Sending request: 39
+Successfully sent to queue. ReportID: 1640496228. From 2021-12-06 to 2021-12-06
+Sending request: 40
+Successfully sent to queue. ReportID: 1180024739. From 2021-12-06 to 2021-12-06
+Sending request: 41
+Successfully sent to queue. ReportID: 1523255405. From 2021-12-06 to 2021-12-06
+Sending request: 42
+Successfully sent to queue. ReportID: 1178176196. From 2021-12-06 to 2021-12-06
+Sending request: 43
+Successfully sent to queue. ReportID: 1005750157. From 2021-12-06 to 2021-12-06
+Sending request: 44
+Successfully sent to queue. ReportID: 1250570540. From 2021-12-06 to 2021-12-06
+Sending request: 45
+Successfully sent to queue. ReportID: 1413835141. From 2021-12-06 to 2021-12-06
+Sending request: 46
+Successfully sent to queue. ReportID: 1760742468. From 2021-12-06 to 2021-12-06
+Sending request: 47
+Successfully sent to queue. ReportID: 1649874212. From 2021-12-06 to 2021-12-06
+Sending request: 48
+Successfully sent to queue. ReportID: 1898930045. From 2021-12-06 to 2021-12-06
+Sending request: 49
+Successfully sent to queue. ReportID: 1199012384. From 2021-12-06 to 2021-12-06
+Sending request: 50
+Successfully sent to queue. ReportID: 1944865920. From 2021-12-06 to 2021-12-06
+Sending request: 51
+Successfully sent to queue. ReportID: 1058985239. From 2021-12-06 to 2021-12-06
+Sending request: 52
+Successfully sent to queue. ReportID: 1231280798. From 2021-12-06 to 2021-12-06
+Sending request: 53
+Successfully sent to queue. ReportID: 1408938293. From 2021-12-06 to 2021-12-06
+Sending request: 54
+Successfully sent to queue. ReportID: 1038838787. From 2021-12-06 to 2021-12-06
+Sending request: 55
+Successfully sent to queue. ReportID: 2087066168. From 2021-12-06 to 2021-12-06
+Sending request: 56
+Successfully sent to queue. ReportID: 1440533620. From 2021-12-06 to 2021-12-06
+Sending request: 57
+Successfully sent to queue. ReportID: 1997573041. From 2021-12-06 to 2021-12-06
+Sending request: 58
+Successfully sent to queue. ReportID: 1794488922. From 2021-12-06 to 2021-12-06
+Sending request: 59
+Successfully sent to queue. ReportID: 1972149860. From 2021-12-06 to 2021-12-06
+Sending request: 60
+Successfully sent to queue. ReportID: 1078944368. From 2021-12-06 to 2021-12-06
+Report returned successfully: 1543686726
+Parsing raw json response.
+Report returned successfully: 1144262335
+Parsing raw json response.
+Report returned successfully: 1456528039
+Parsing raw json response.
+Report returned successfully: 2085713357
+Parsing raw json response.
+Report returned successfully: 1798669365
+Parsing raw json response.
+Report returned successfully: 1908605519
+Parsing raw json response.
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 3 s
+Report returned successfully: 1668583557
+Parsing raw json response.
+Report returned successfully: 1163701395
+Parsing raw json response.
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 3 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 6 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 9 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 12 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 15 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 18 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 21 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 24 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 27 s
+Report returned successfully: 1640496228
+Parsing raw json response.
+Report returned successfully: 1180024739
+Parsing raw json response.
+Report returned successfully: 1523255405
+Parsing raw json response.
+Report returned successfully: 1178176196
+Parsing raw json response.
+Report returned successfully: 1005750157
+Parsing raw json response.
+Report returned successfully: 1250570540
+Parsing raw json response.
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 3 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 6 s
+Report returned successfully: 1413835141
+Parsing raw json response.
+Report returned successfully: 1760742468
+Parsing raw json response.
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 3 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 6 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 9 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 12 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 15 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 18 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 21 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 24 s
+Report returned successfully: 1649874212
+Parsing raw json response.
+Report returned successfully: 1898930045
+Parsing raw json response.
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 3 s
+Report returned successfully: 1199012384
+Parsing raw json response.
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Report returned successfully: 1944865920
+Parsing raw json response.
+Report returned successfully: 1058985239
+Parsing raw json response.
+Report returned successfully: 1231280798
+Parsing raw json response.
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 3 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 6 s
+Report returned successfully: 1408938293
+Parsing raw json response.
+Report returned successfully: 1038838787
+Parsing raw json response.
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 3 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 6 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 9 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 12 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 15 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 18 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 21 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 24 s
+Report returned successfully: 2087066168
+Parsing raw json response.
+Report returned successfully: 1440533620
+Parsing raw json response.
+Report returned successfully: 1997573041
+Parsing raw json response.
+Report returned successfully: 1794488922
+Parsing raw json response.
+Report returned successfully: 1972149860
+Parsing raw json response.
+Report returned successfully: 1078944368
+Parsing raw json response.
+Iteration: 61 / 74
+Sending request: 61
+Successfully sent to queue. ReportID: 1176906074. From 2021-12-06 to 2021-12-06
+Sending request: 62
+Successfully sent to queue. ReportID: 1629514885. From 2021-12-06 to 2021-12-06
+Sending request: 63
+Successfully sent to queue. ReportID: 1831620000. From 2021-12-06 to 2021-12-06
+Sending request: 64
+Successfully sent to queue. ReportID: 1585206908. From 2021-12-06 to 2021-12-06
+Sending request: 65
+Successfully sent to queue. ReportID: 1759411545. From 2021-12-06 to 2021-12-06
+Sending request: 66
+Successfully sent to queue. ReportID: 1731056274. From 2021-12-06 to 2021-12-06
+Sending request: 67
+Successfully sent to queue. ReportID: 2117495215. From 2021-12-06 to 2021-12-06
+Sending request: 68
+Successfully sent to queue. ReportID: 1098297011. From 2021-12-06 to 2021-12-06
+Sending request: 69
+Successfully sent to queue. ReportID: 1532558410. From 2021-12-06 to 2021-12-06
+Sending request: 70
+Successfully sent to queue. ReportID: 2067050003. From 2021-12-06 to 2021-12-06
+Sending request: 71
+Successfully sent to queue. ReportID: 1749094446. From 2021-12-06 to 2021-12-06
+Sending request: 72
+Successfully sent to queue. ReportID: 1192291232. From 2021-12-06 to 2021-12-06
+Sending request: 73
+Successfully sent to queue. ReportID: 1943781379. From 2021-12-06 to 2021-12-06
+Sending request: 74
+Successfully sent to queue. ReportID: 1765263177. From 2021-12-06 to 2021-12-06
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 3 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 6 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 9 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 12 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 15 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 18 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 21 s
+Report returned successfully: 1176906074
+Parsing raw json response.
+Report returned successfully: 1629514885
+Parsing raw json response.
+Report returned successfully: 1831620000
+Parsing raw json response.
+Report returned successfully: 1585206908
+Parsing raw json response.
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Report returned successfully: 1759411545
+Parsing raw json response.
+Report returned successfully: 1731056274
+Parsing raw json response.
+Report returned successfully: 2117495215
+Parsing raw json response.
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 3 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 6 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 9 s
+Report returned successfully: 1098297011
+Parsing raw json response.
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 0 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 3 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 6 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 9 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 12 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 15 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 18 s
+Invalid response. Status: 400. Response {"error":"report_not_ready","error_description":"Report not ready","error_uri":null}
+Report not ready. Retrying in 21 s
+Report returned successfully: 1532558410
+Parsing raw json response.
+Report returned successfully: 2067050003
+Parsing raw json response.
+Report returned successfully: 1749094446
+Parsing raw json response.
+Report returned successfully: 1192291232
+Parsing raw json response.
+Report returned successfully: 1943781379
+Parsing raw json response.
+Report returned successfully: 1765263177
+Parsing raw json response.
